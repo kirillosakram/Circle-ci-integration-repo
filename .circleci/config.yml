@@ -12,8 +12,8 @@ jobs:
             cd ./frontend
             pwd
             ls
-      - run: npm i 
-      - run: npm run lint
+            npm i 
+            npm run lint
 workflows:
   default:
     jobs:
