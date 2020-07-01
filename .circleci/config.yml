@@ -30,15 +30,25 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run: npm i
-      - run: npm run test
+      - run:
+          name: frontend-test
+          command: |
+            cd ./frontend
+            pwd
+            npm i 
+            npm run test
   test-backend:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run: npm i
-      - run: npm run test
+      - run:
+          name: backend-test
+          command: |
+            cd ./backend
+            pwd
+            npm i 
+            npm run test
 workflows:
   default:
     jobs:
