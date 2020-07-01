@@ -38,7 +38,7 @@ jobs:
             npm i 
             npm run test
       - store_test_results:
-          path: /tmp/test-results-frontend
+          path: test-results
   test-backend:
     docker:
       - image: circleci/node:13.8.0
@@ -52,7 +52,7 @@ jobs:
             npm i 
             npm run test
       - store_test_results:
-          path: /tmp/test-results-backend
+          path: test-results
 workflows:
   default:
     jobs:
