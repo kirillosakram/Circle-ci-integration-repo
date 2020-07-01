@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build:
+  build-frontend:
     docker:
       - image: circleci/node:13.8.0
     steps:
@@ -11,10 +11,22 @@ jobs:
           command: |
             cd ./frontend
             pwd
-            ls
+            npm i 
+            npm run lint
+  build-backend:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - run:
+          name: backend
+          command: |
+            cd ./backend
+            pwd
             npm i 
             npm run lint
 workflows:
   default:
     jobs:
-      - build
+      - build-frontend
+      - build-backend
