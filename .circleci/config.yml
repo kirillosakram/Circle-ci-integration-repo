@@ -10,7 +10,6 @@ jobs:
           name: frontend
           command: |
             cd ./frontend
-            pwd
             npm i 
             npm run lint
   build-backend:
@@ -22,7 +21,6 @@ jobs:
           name: backend
           command: |
             cd ./backend
-            pwd
             npm i 
             npm run lint
   test-frontend:
@@ -34,12 +32,8 @@ jobs:
           name: frontend-test
           command: |
             cd ./frontend
-            pwd
             npm i 
-            npm run lint
             npm run test
-      - store_test_results:
-          path: test-results
   test-backend:
     docker:
       - image: circleci/node:13.8.0
@@ -49,9 +43,7 @@ jobs:
           name: backend-test
           command: |
             cd ./backend
-            pwd
             npm i 
-            npm run lint
             npm run test
       - store_test_results:
           path: test-results
