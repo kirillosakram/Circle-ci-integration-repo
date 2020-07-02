@@ -45,8 +45,6 @@ jobs:
             cd ./backend
             npm i 
             npm run test
-      - store_test_results:
-          path: test-results
 workflows:
   default:
     jobs:
