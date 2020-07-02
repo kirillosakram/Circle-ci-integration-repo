@@ -34,7 +34,7 @@ jobs:
           command: |
             cd ./frontend
             npm i 
-            npm jest -- --ci --testResultsProcessor="jest-junit"
+            npm test --ci --testResultsProcessor="jest-junit"
           environment:
             JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
       - store_test_results:
