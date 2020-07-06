@@ -48,12 +48,12 @@ jobs:
       - run:
           name: backend-test
           command: |
-            mkdir ./reports
+            mkdir /home/circleci/project/backend/reports/
             cd ./backend
             npm i 
             npm test 
       - store_test_results:
-          path: ./reports/backend.json
+          path: /home/circleci/project/backend/reports/backend.json
 workflows:
   default:
     jobs:
