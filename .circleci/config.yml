@@ -51,7 +51,7 @@ jobs:
             mkdir ./reports
             cd ./backend
             npm i 
-            npm jest --runInBand --json --outputFile=./reports/backend.json
+            npm test 
       - store_test_results:
           path: ./reports/backend.json
 workflows:
