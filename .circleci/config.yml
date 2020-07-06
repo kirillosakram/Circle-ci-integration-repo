@@ -29,18 +29,17 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "JavaScript Test Suite"
-          # yarn here makes sure we are using the local jest binary
-          command: |
-            cd ./frontend
-            npm i 
-            npm test --ci --testResultsProcessor="jest-junit"
+          name: Install JUnit coverage reporter
+          command: yarn add --dev jest-junit
+      - run:
+          name: Run tests with JUnit as reporter
+          command: jest --ci --runInBand --reporters=default --reporters=jest-junit
           environment:
-            JEST_JUNIT_OUTPUT: "reports/junit/js-test-results.xml"
+            JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
       - store_test_results:
-          path: reports/junit
+          path: ./reports/junit/
       - store_artifacts:
-          path: reports/junit
+          path: ./reports/junit
   test-backend:
     docker:
       - image: circleci/node:13.8.0
@@ -49,9 +48,12 @@ jobs:
       - run:
           name: backend-test
           command: |
+            mkdir ./reports
             cd ./backend
             npm i 
-            npm run test
+            npm run test --json --outputFile=./reports/backend.json
+      - store_test_results:
+          path: ./reports/backend.json
 workflows:
   default:
     jobs:
