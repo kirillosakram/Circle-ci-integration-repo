@@ -37,7 +37,7 @@ jobs:
             mkdir ./reports/
             mkdir ./reports/junit
             cd ./frontend
-            npm test
+            yarn jest --ci --runInBand --reporters=default --reporters=jest-junit
           environment:
             JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
       - store_test_results:
