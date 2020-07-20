@@ -36,6 +36,7 @@ jobs:
           command: |
             mkdir ./reports/
             mkdir ./reports/junit
+            npm install jest-cli
             cd ./frontend
             jest --ci --runInBand --reporters=default --reporters=jest-junit
           environment:
