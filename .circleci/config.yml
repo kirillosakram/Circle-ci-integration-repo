@@ -38,6 +38,7 @@ jobs:
             mkdir ./reports/junit
             cd ./frontend
             npm i
+            npm run lint
             npm test
           environment:
             JEST_JUNIT_OUTPUT_DIR: ./reports/junit/js-test-results.xml
@@ -55,7 +56,8 @@ jobs:
           command: |
             mkdir /home/circleci/project/backend/reports/
             cd ./backend
-            npm i 
+            npm i
+            npm run lint
             npm test 
       - store_test_results:
           path: /home/circleci/project/backend/reports/backend.json
